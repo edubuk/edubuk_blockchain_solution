@@ -1,0 +1,109 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.edubuk.mynetwork
+asset Certificate identified by certificateId
+{
+o String certificateId
+o String courseName
+o String courseDescription
+o String certificateType
+o String courseDuration
+o String university
+
+o DateTime IssueDateTime
+o String grade
+
+--> College college
+--> Recipient receiver
+
+}
+
+
+participant College identified by collegeId
+{
+o String collegeId
+o String collegeName
+o String collegeAddress
+
+
+}
+
+participant Recipient identified by UID
+{
+o String UID
+o String name
+o String address
+o String mobile
+o String emailAddress
+
+}
+
+transaction Verification
+{
+
+--> Certificate certificate
+--> Recipient recipient
+}
+
+
+
+
+
+
+
+
+asset WorkExperienceLetter identified by expLetterId
+{
+o String expLetterId
+o String companyName
+o String companyDescription
+o String jobType
+o DateTime IssueDateTime
+o String joiningDate
+o String relievingDate
+--> Company company
+--> Employee employee
+
+}
+
+
+participant Company identified by companyId
+{
+o String companyId
+o String name
+o String address
+o String industry
+}
+
+participant Employee identified by EID
+{
+o String EID
+o String name
+o String address
+o String mobile
+o String emailAddress
+}
+
+transaction WorkExperienceLetterVerification
+{
+--> WorkExperienceLetter workexperience
+--> Employee employee
+}
+
+
